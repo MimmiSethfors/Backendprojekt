@@ -8,24 +8,27 @@
 
   if($_SERVER['REQUEST_METHOD'] === 'POST') :
     //print_r($_POST);
-    $sql = "INSERT INTO backendprojekt_posts(subject, message, publish, iframe)
-            VALUES (:subject, :message, :publish, :iframe)";
+    $sql = "INSERT INTO backendprojekt_posts(subject, message, publish, iframe, image)
+            VALUES (:subject, :message, :publish, :iframe, :image)";
 
     $stmt =  $db->prepare($sql);
 
     $subject = htmlspecialchars($_POST['subject']);
     $message = htmlspecialchars($_POST['message']);
     $publish = htmlspecialchars($_POST['publish']);
-    $iframe = htmlspecialchars($_POST['iframe']);
-    
+    $iframe = ($_POST['iframe']);
+    $image = htmlspecialchars($_POST['image']);
+   
 
     $stmt->bindParam(':subject', $subject);
     $stmt->bindParam(':message', $message);
     $stmt->bindParam(':publish', $publish);
     $stmt->bindParam(':iframe',  $iframe);
+    $stmt->bindParam(':image', $image);
+  
    
     $stmt->execute();
-
+    header('Location:show-posts.php');
   endif;
 
   require_once 'header.php';
@@ -49,26 +52,38 @@
     id="message" 
     cols="100" 
     rows="30"
-    maxlength="1000">
+    maxlength="5000">
     </textarea>
 <br>
 <label for="iframe">Videoklipp/kartor här</label>
 <br>
-<input 
-type="text"
-id="iframe"
-name="iframe"
->
+<textarea 
+    name="iframe" 
+    id="iframe"
+    cols="100" 
+    rows="5"
+    >
+    </textarea>
 
 <br>
 <br>
+<button>
+  <a href="upload-form.php">Ladda upp bilder här</a>
+</button>
+<br>
+  <ul></ul>
+
+  
+  <br>
+  <br>
 <h3>Välj om du vill publicera eller avpublicera detta inlägg</h3>
 <input 
           type='radio' 
           id='publicerad' 
           name='publish' 
           value='publicerad'
-          required="required">
+          required="required"
+          checked>
           <label for='publicerad'>Publicera</label><br>
         <input 
           type='radio' 

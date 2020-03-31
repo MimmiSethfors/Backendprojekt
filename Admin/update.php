@@ -20,6 +20,7 @@
       $subject = $row['subject'];
       $message = $row['message'];
       $publish = $row['publish'];
+      $iframe = $row['iframe'];
  
     } else {
       header('Location:show-posts.php');
@@ -38,17 +39,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   $subject = ($_POST['subject']);
   $message = ($_POST['message']);
   $publish = ($_POST['publish']);
+  $iframe = ($_POST['iframe']);
  
   
 
   $sql = "UPDATE backendprojekt_posts
-          SET subject = :subject, message= :message, publish= :publish
+          SET subject = :subject, message= :message, publish= :publish, iframe= :iframe
           WHERE id = :id";
 
   $stmt = $db->prepare($sql);
   $stmt->bindParam(':subject', $subject);
   $stmt->bindParam(':message', $message);
   $stmt->bindParam(':publish', $publish);
+  $stmt->bindParam(':iframe', $iframe);
   $stmt->bindParam(':id', $id);
 
   $stmt->execute();
@@ -77,28 +80,24 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     id="message" 
     cols="100" 
     rows="30"
-    maxlength="1000">
+    maxlength="5000">
     <?php echo $message?>
     </textarea>
 <br>
-
-<!-- separat textarea för kartor, videos
-<label for="iframe">Lägg till (länk till?) en karta eller video</label>
+<label for="iframe">Videoklipp/kartor här</label>
 <br>
 <textarea 
     name="iframe" 
-    id="iframe" 
-    cols="100" ?
-    rows="30" ?
-    maxlength="1000"> ?
+    id="iframe"
+    cols="100" 
+    rows="5"> 
+    <?php echo $iframe ?>
     </textarea>
-<br>
--->
+
 
 <!--ladda upp bilder här-->
 
-  
-  
+<br>
 <br>
 <p>Detta inlägg har status: <?php echo $publish ?>.</p>
 

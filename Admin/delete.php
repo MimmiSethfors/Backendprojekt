@@ -17,3 +17,6 @@ if(isset($_GET['id'])){
 //pop-up med bekräfta/avbryt-knappar? Nu kommer man direkt tillbaka till show-posts
 
 header('Location:show-posts.php');
+
+?>
+
