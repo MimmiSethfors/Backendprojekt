@@ -28,7 +28,7 @@
   
    
     $stmt->execute();
-    header('Location:show-posts.php');
+    header('Location:index.php');
   endif;
 
   require_once 'header.php';
@@ -42,7 +42,8 @@
   <input 
     type="text" 
     id="subject"
-    name="subject">
+    name="subject"
+    size="50">
 <br>
 
 <label for="message">Skriv ditt inlägg här</label>
@@ -52,7 +53,7 @@
     id="message" 
     cols="100" 
     rows="30"
-    maxlength="5000">
+    maxlength="50000">
     </textarea>
 <br>
 <label for="iframe">Videoklipp/kartor här</label>
@@ -102,12 +103,8 @@
 </form>
 <br>
 
-
 <button>
   <a href="index.php">Adminpanelen</a>
-</button>
-<button>
-  <a href="../index.php">Visa min blogg</a>
 </button>
 
 <?php

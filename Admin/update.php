@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   $stmt->bindParam(':id', $id);
 
   $stmt->execute();
-  header('Location:show-posts.php');
+  header('Location:index.php');
   exit;
 }
 ?>
@@ -70,7 +70,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     type="text" 
     id="subject"
     name="subject"
-    value="<?php echo $subject ?>">
+    value="<?php echo $subject ?>"
+    size="50">
+    
 <br>
 
 <label for="message">Uppdatera ditt inlägg här</label>
@@ -79,8 +81,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     name="message" 
     id="message" 
     cols="100" 
-    rows="30"
-    maxlength="5000">
+    rows="30">
     <?php echo $message?>
     </textarea>
 <br>
@@ -127,16 +128,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <br>
 <br>
 </form>
-<button>
-  <a href="show-posts.php">Redigera/radera mina inlägg</a>
-</button>
+
 <button>
   <a href="index.php">Adminpanelen</a>
 </button>
-<button>
-  <a href="../index.php">Visa min blogg</a>
-</button>
-
 
 
 <?php

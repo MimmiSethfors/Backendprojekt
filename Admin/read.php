@@ -15,7 +15,7 @@ require_once 'db.php';
         
       if($publish === 'publicerad'){
         echo 
-        "<div>
+        "<div class='text-center'>
                 <h2>$subject</h2>
             <br>
             <div>
@@ -35,6 +35,7 @@ require_once 'db.php';
 
     endwhile;
 ?>
+
 
 
    

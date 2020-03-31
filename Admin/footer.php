@@ -1,8 +1,14 @@
+
+ 
 <hr>
     <footer class="text-center">
     &copy Mimmi & Annelie 
     <?php echo date('Y') ?>
+    <br>
+    <br>
     </footer>
+    </div>
+</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
