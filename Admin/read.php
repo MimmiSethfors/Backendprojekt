@@ -17,7 +17,7 @@ require_once 'header-index.php';
         $image = htmlspecialchars($row['image']);
 
         //skapa source till bilden
-        $image = "Admin/images/$image";
+       
         
       if($publish === 'publicerad'){
         echo 
@@ -29,9 +29,13 @@ require_once 'header-index.php';
                 echo str_replace(PHP_EOL, "</p><p>", $message);
                 echo "</p>
             </div>
-            <br>
-           <div><img src='$image'></div>
-            <br>
+            <br>";
+            
+        if(!empty($image)){
+            echo "<div><img src='Admin/images/$image'></div>";
+        };
+
+           "<br>
                 <div>$iframe</div>
             <br>
                  <p>$date</p>
