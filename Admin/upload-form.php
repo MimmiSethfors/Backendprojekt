@@ -45,3 +45,4 @@ if (!empty($addform)) {
 
 <?php
 require_once 'footer.php';
+

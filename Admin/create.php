@@ -8,9 +8,12 @@
 
   //Om en get-request skickats från upload-form
   //ska variabeln $img sättas till bildnamnet som kommer i requesten
-  if($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $img = htmlspecialchars($_GET['image-add']);
-  }
+  if(isset($_GET['submit-img'])){
+
+    if($_SERVER['REQUEST_METHOD'] === 'GET') {
+      $img = htmlspecialchars($_GET['image-add']);
+    };
+  };
 
   if($_SERVER['REQUEST_METHOD'] === 'POST') :
     $sql = "INSERT INTO backendprojekt_posts(subject, message, publish, iframe, image)
@@ -84,7 +87,9 @@
     type="text" 
     id="image"
     name="image"
-    value="<?php echo $img?>">
+    value="<?php echo $img; ?>">
+
+    
 <br>
 <!--dold input för bildens id, inte aktuellt med nuvarande kod-->
 <!--<br>
@@ -114,7 +119,7 @@
           value='avpublicerad'
           required="required">
           <label for='avpublicerad'>Avpublicera</label><br>
-          
+
 <br>
   <input 
     class="btn btn-outline-success"
@@ -133,3 +138,5 @@
   require_once 'footer.php'
 ?>
 
+
+<br /><b>Notice</b>:  Undefined variable: img in <b>C:\Users\mseth\OneDrive\Dokumen\Nackademin\backend\cms_backend\Backendprojekt\Admin\create.php</b> on line <b>90</b><br />
