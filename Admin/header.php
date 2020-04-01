@@ -1,7 +1,5 @@
 <!--header-fil med tema för interna admin-sidor-->
 
-<!--header-fil med tema för interna admin-sidor-->
-
 <!doctype html>
 <html lang="en">
   <header>
@@ -13,7 +11,6 @@
     <title>Blogg by Mimmi & Annelie</title>
   </header>
   <body class="container">
-
   <div class="card text-center">
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
@@ -21,14 +18,11 @@
         <a class="nav-link " href="../index.php">Bloggen</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="admin/index.php">Adminsidan</a>
+        <a class="nav-link active" href="index.php">Adminsidan</a>
       </li>
       <li class="nav-item">
-
       </li>
     </ul>
   </div>
   <div class="card-body">
   <h1 class="text-center"><a href="index.php">Admin - Blogg by Mimmi & Annelie</a></h1><br>
-
-    

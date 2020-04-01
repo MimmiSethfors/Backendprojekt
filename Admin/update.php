@@ -10,7 +10,7 @@
 
   if(isset($_GET['id'])){
     $id = htmlspecialchars($_GET['id']);
-    $sql = "SELECT * FROM backendprojekt_posts Where id = :id";
+    $sql = "SELECT * FROM backendprojekt_posts WHERE id = :id";
     $stmt = $db->prepare($sql);
     $stmt ->bindParam(':id', $id);
     $stmt -> execute();
@@ -21,6 +21,7 @@
       $message = $row['message'];
       $publish = $row['publish'];
       $iframe = $row['iframe'];
+      $image = $row['image'];
  
     } else {
       header('Location:show-posts.php');
@@ -40,11 +41,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   $message = ($_POST['message']);
   $publish = ($_POST['publish']);
   $iframe = ($_POST['iframe']);
+  $image = ($_POST['image']);
  
   
 
   $sql = "UPDATE backendprojekt_posts
-          SET subject = :subject, message= :message, publish= :publish, iframe= :iframe
+          SET subject = :subject, message= :message, publish= :publish, iframe= :iframe, image= :image
           WHERE id = :id";
 
   $stmt = $db->prepare($sql);
@@ -52,6 +54,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   $stmt->bindParam(':message', $message);
   $stmt->bindParam(':publish', $publish);
   $stmt->bindParam(':iframe', $iframe);
+  $stmt->bindParam(':image', $image);
   $stmt->bindParam(':id', $id);
 
   $stmt->execute();
@@ -70,9 +73,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     type="text" 
     id="subject"
     name="subject"
-    value="<?php echo $subject ?>"
-    size="50">
-    
+    size="50"
+    value="<?php echo $subject ?>">
 <br>
 
 <label for="message">Uppdatera ditt inlägg här</label>
@@ -81,7 +83,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     name="message" 
     id="message" 
     cols="100" 
-    rows="30">
+    rows="30"
+    maxlength="5000">
     <?php echo $message?>
     </textarea>
 <br>
@@ -94,9 +97,20 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     rows="5"> 
     <?php echo $iframe ?>
     </textarea>
+<br>
 
-
-<!--ladda upp bilder här-->
+    <button>
+  <a href="upload-form.php">Ladda upp bilder här</a>
+</button>
+<br>
+<label for="image">Vald bild</label>
+<br>
+  <input 
+    type="text" 
+    id="image"
+    name="image"
+    value="<?php echo $image ?>">
+<br>
 
 <br>
 <br>

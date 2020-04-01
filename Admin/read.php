@@ -1,6 +1,9 @@
 <?php
 
 require_once 'db.php';
+require_once 'header-index.php';
+
+
     $stmt = $db->prepare("SELECT * FROM backendprojekt_posts ORDER BY date DESC");
     $stmt->execute();
 
@@ -12,6 +15,9 @@ require_once 'db.php';
         $publish = htmlspecialchars($row['publish']);
         $iframe = $row['iframe'];
         $image = htmlspecialchars($row['image']);
+
+        //skapa source till bilden
+        $image = "Admin/images/$image";
         
       if($publish === 'publicerad'){
         echo 
@@ -24,18 +30,18 @@ require_once 'db.php';
                 echo "</p>
             </div>
             <br>
-                <div>$image</div>
+           <div><img src='$image'></div>
             <br>
                 <div>$iframe</div>
             <br>
                  <p>$date</p>
             <hr>
         </div>";
-      }
+      };
+
+     
 
     endwhile;
+    require_once 'footer.php';
 ?>
 
-
-
-   
